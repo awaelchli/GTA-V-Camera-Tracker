@@ -6,7 +6,7 @@
   
 ## Usage
 The mod only works in story mode.
-  * __F5__                Open/Close the plugin
-  * __NUM 2/8/4/6__			  Navigate through the menus and lists (Num-Lock must be on)
-	* __NUM5__		          Select
-	* __NUM0/BACKSPACE/F5__ Back
+  * __F5__              Open/Close the plugin
+  * __NUM 2/8/4/6__	Navigate through the menus and lists (Num-Lock must be on)
+  * __NUM5__		Select
+  * __NUM0/BACKSPACE/F5__ Back
