@@ -5,12 +5,10 @@
 */
 
 /*
-	F4					activate
+	F5					activate
 	NUM2/8/4/6			navigate thru the menus and lists (numlock must be on)
 	NUM5 				select
-	NUM0/BACKSPACE/F4 	back
-	NUM9/3 				use vehicle boost when active
-	NUM+ 				use vehicle rockets when active
+	NUM0/BACKSPACE/F5 	back
 */
 
 #include "script.h"
@@ -107,7 +105,7 @@ void draw_menu_line(std::string caption, float lineWidth, float lineHeight, floa
 
 bool trainer_switch_pressed()
 {
-	return IsKeyJustUp(VK_F4);
+	return IsKeyJustUp(VK_F5);
 }
 
 void get_button_state(bool *a, bool *b, bool *up, bool *down, bool *l, bool *r)
@@ -309,52 +307,6 @@ void update_features()
 	Player player = PLAYER::PLAYER_ID();
 	Ped playerPed = PLAYER::PLAYER_PED_ID();	
 	BOOL bPlayerExists = ENTITY::DOES_ENTITY_EXIST(playerPed);
-
-	// Camera recording
-	//if (featureRecordingCamera)
-	//{
-	//	
-	//	if (featureRecordingCameraUpdated)
-	//	{
-	//		// Recording has just started
-	//		set_status_text("recording started");
-	//		frame_counter = 0;
-	//		start_time = get_milliseconds();
-
-	//		cam_track_stream = std::ofstream(get_cam_track_output_filename());
-	//		featureRecordingCameraUpdated = false;
-	//	}
-
-	//	frame_counter++;
-	//	milliseconds time_stamp = duration_cast<milliseconds>(get_milliseconds() - start_time);
-	//	std::string sep = " ";
-
-	//	Cam cam = CAM::GET_RENDERING_CAM();
-	//	Vector3 pos = CAM::GET_GAMEPLAY_CAM_COORD();
-	//	Vector3 rot = CAM::GET_GAMEPLAY_CAM_ROT(0);
-
-	//	
-	//	cam_track_stream << frame_counter << sep;
-	//	cam_track_stream << time_stamp.count() << sep;
-
-	//	// x, y, z position of camera
-	//	cam_track_stream << pos.x << sep << pos.y << sep << pos.z << sep;
-
-	//	// pitch, roll, yaw
-	//	cam_track_stream << rot.x << sep << rot.y << sep << rot.z << "\n";
-	//} 
-	//else
-	//{
-	//	if (featureRecordingCameraUpdated)
-	//	{
-	//		// Recording has just been stopped
-	//		cam_track_stream.close();
-	//		set_status_text("recording stopped");
-	//		featureRecordingCameraUpdated = false;
-	//	}
-
-	//	// Do nothing if not recording
-	//}
 
 	// player invincible
 	if (featurePlayerInvincibleUpdated)
