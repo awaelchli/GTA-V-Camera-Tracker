@@ -227,12 +227,10 @@ void update_features()
 	Ped playerPed = PLAYER::PLAYER_PED_ID();	
 	BOOL bPlayerExists = ENTITY::DOES_ENTITY_EXIST(playerPed);
 
-	
-	Vector3 pos = CAM::GET_GAMEPLAY_CAM_COORD();
-	Vector3 rot = CAM::GET_GAMEPLAY_CAM_ROT(0);
-
 	if (featureDisplayCameraPose)
 	{
+		Vector3 pos = CAM::GET_GAMEPLAY_CAM_COORD();
+		Vector3 rot = CAM::GET_GAMEPLAY_CAM_ROT(0);
 		int prec = 1;
 
 		std::stringstream display;
@@ -1514,10 +1512,8 @@ void track_camera()
 	milliseconds time_stamp = duration_cast<milliseconds>(get_milliseconds() - start_time);
 	std::string sep = " ";
 
-	Cam cam = CAM::GET_RENDERING_CAM();
 	Vector3 pos = CAM::GET_GAMEPLAY_CAM_COORD();
 	Vector3 rot = CAM::GET_GAMEPLAY_CAM_ROT(0);
-
 
 	cam_track_stream << frame_counter << sep;
 	cam_track_stream << time_stamp.count() << sep;
