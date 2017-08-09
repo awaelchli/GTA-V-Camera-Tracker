@@ -18,6 +18,8 @@
 #include <ctime>
 
 #include <iostream>
+#include <iomanip>
+#include <sstream>
 #include <fstream>
 #include <chrono>
 using namespace std::chrono;
@@ -205,6 +207,8 @@ bool featureWeatherPers					=	false;
 bool featureMiscLockRadio				=	false;
 bool featureMiscHideHud					=	false;
 
+bool featureDisplayCameraPose			=	false;
+
 
 // Updates all features that can be turned off by the game, being called each game frame
 void update_features() 
@@ -222,6 +226,25 @@ void update_features()
 	Player player = PLAYER::PLAYER_ID();
 	Ped playerPed = PLAYER::PLAYER_PED_ID();	
 	BOOL bPlayerExists = ENTITY::DOES_ENTITY_EXIST(playerPed);
+
+	
+	Vector3 pos = CAM::GET_GAMEPLAY_CAM_COORD();
+	Vector3 rot = CAM::GET_GAMEPLAY_CAM_ROT(0);
+
+	if (featureDisplayCameraPose)
+	{
+		int prec = 1;
+
+		std::stringstream display;
+		display << "X = "		<< std::fixed << std::setprecision(prec)	<< pos.x << "\n"
+				<< "Y = "		<< std::fixed << std::setprecision(prec)	<< pos.y << "\n"
+				<< "Z = "		<< std::fixed << std::setprecision(prec)	<< pos.z << "\n"
+				<< "PITCH = "	<< std::fixed << std::setprecision(prec)	<< rot.x << "\n"
+				<< "ROLL = "	<< std::fixed << std::setprecision(prec)	<< rot.y << "\n"
+				<< "YAW = "		<< std::fixed << std::setprecision(prec)	<< rot.z << "\n";
+
+		set_status_text(display.str(), 500);
+	}
 
 	// player invincible
 	if (featurePlayerInvincibleUpdated)
@@ -1198,7 +1221,7 @@ int activeLineIndexMisc = 0;
 void process_cam_tracker_menu()
 {
 	const float lineWidth = 250.0;
-	const int lineCount = 2;
+	const int lineCount = 3;
 
 	std::string caption = "CAMERA TRACKER";
 
@@ -1207,8 +1230,9 @@ void process_cam_tracker_menu()
 		bool		*pState;
 		bool		*pUpdated;
 	} lines[lineCount] = {
-		{"HIDE HUD",			&featureMiscHideHud,	NULL},
-		{"TRACK (F9)",			NULL, NULL }
+		{ "HIDE HUD",			&featureMiscHideHud,	NULL},
+		{ "DISPLAY POSE",		&featureDisplayCameraPose, NULL},	
+		{ "TRACK (F9)",			NULL, NULL }
 	};
 
 
