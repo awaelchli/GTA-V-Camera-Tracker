@@ -13,7 +13,8 @@ The mod only works in story mode.
   * __NUM0/BACKSPACE/F5__ Back
 
 With each recording, the program creates a text file in the installation folder of GTA V.
-Each row is contains the following information:
+Each row contains the following information:
 
 Index | Time [ms] | X | Y | Z | Pitch | Roll | Yaw
 ----- | --------- | - | - | - | ----- | ---- | ---
+Row number | Timestamp of the recording in milliseconds since the beginning of the clip | translation 
