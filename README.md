@@ -7,6 +7,13 @@
 ## Usage
 The mod only works in story mode.
   * __F5__              Open/Close the plugin
+  * __F9__              Start/Stop recording of camera motion
   * __NUM 2/8/4/6__	Navigate through the menus and lists (Num-Lock must be on)
   * __NUM5__		Select
   * __NUM0/BACKSPACE/F5__ Back
+
+With each recording, the program creates a text file in the installation folder of GTA V.
+Each row is contains the following information:
+
+Index | Time [ms] | X | Y | Z | Pitch | Roll | Yaw
+----- | --------- | - | - | - | ----- | ---- | ---
