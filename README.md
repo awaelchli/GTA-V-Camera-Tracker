@@ -15,6 +15,6 @@ The mod only works in story mode.
 With each recording, the program creates a text file in the installation folder of GTA V.
 Each row contains the following information:
 
-Index | Time [ms] | X | Y | Z | Pitch | Roll | Yaw
------ | --------- | - | - | - | ----- | ---- | --- |
-Row number | Timestamp of the recording in milliseconds since the beginning of the clip | translation | translation | translation | pitch (degrees) | roll (degrees) | yaw (degrees)
+Index | Time [ms] | X Y Z | Pitch Roll Yaw |
+----- | --------- | ----- | -------------- |
+Row number | Timestamp of the recording in milliseconds since the beginning of the clip | Location of the camera in world coordinate frame | Pitch, roll and yaw angles (degrees) |
