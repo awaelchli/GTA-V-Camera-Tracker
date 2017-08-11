@@ -1482,7 +1482,7 @@ char* get_cam_track_output_filename()
 
 	time(&rawtime);
 	timeinfo = localtime(&rawtime);
-	strftime(buffer, 80, "%d.%m.%Y - %H-%M-%S.txt", timeinfo);
+	strftime(buffer, 80, "%d.%m.%Y - %H.%M.%S.txt", timeinfo);
 
 	return buffer;
 }
