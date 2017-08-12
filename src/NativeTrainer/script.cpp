@@ -1448,10 +1448,10 @@ void toggle_tracking_mode(bool state)
 	featurePlayerUnlimitedAbility = state;
 	featurePlayerNoNoise = state;
 	featurePlayerNoNoiseUpdated = true;
-	featurePlayerFastSwim = state;
-	featurePlayerFastSwimUpdated = true;
-	featurePlayerFastRun = state;
-	featurePlayerFastRunUpdated = true;
+	//featurePlayerFastSwim = state;
+	//featurePlayerFastSwimUpdated = true;
+	//featurePlayerFastRun = state;
+	//featurePlayerFastRunUpdated = true;
 	featureVehInvincible = state;
 	featureVehInvincibleUpdated = true;
 	featureVehInvincibleWheels = state;
@@ -1482,7 +1482,7 @@ char* get_cam_track_output_filename()
 
 	time(&rawtime);
 	timeinfo = localtime(&rawtime);
-	strftime(buffer, 80, "%d.%m.%Y - %H.%M.%S.txt", timeinfo);
+	strftime(buffer, 80, "%m.%d.%Y - %H.%M.%S.txt", timeinfo);
 
 	return buffer;
 }
