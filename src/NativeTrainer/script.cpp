@@ -208,6 +208,7 @@ bool featureMiscLockRadio				=	false;
 bool featureMiscHideHud					=	false;
 
 bool featureDisplayCameraPose			=	false;
+bool featureDisableRadio				=	false;
 
 
 // Updates all features that can be turned off by the game, being called each game frame
@@ -463,6 +464,13 @@ void update_features()
 	// hide hud
 	if (featureMiscHideHud)
 		UI::HIDE_HUD_AND_RADAR_THIS_FRAME();
+
+	// disable radio if player in car
+	if (bPlayerExists && PED::IS_PED_IN_ANY_VEHICLE(playerPed, 0))
+	{
+		Vehicle veh = PED::GET_VEHICLE_PED_IS_USING(playerPed);
+		AUDIO::SET_VEHICLE_RADIO_ENABLED(veh, !featureDisableRadio);
+	}
 }
 
 int teleportActiveLineIndex = 0;
@@ -1462,6 +1470,7 @@ void toggle_tracking_mode(bool state)
 	featureTimePausedUpdated = true;
 	featureWeatherPers = state;
 	featureMiscHideHud = state;
+	featureDisableRadio = state;
 }
 
 
