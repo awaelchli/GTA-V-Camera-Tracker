@@ -209,6 +209,7 @@ bool featureMiscHideHud					=	false;
 
 bool featureDisplayCameraPose			=	false;
 bool featureDisableRadio				=	false;
+bool featureDynamicScene				=	true;
 
 
 // Updates all features that can be turned off by the game, being called each game frame
@@ -470,6 +471,18 @@ void update_features()
 	{
 		Vehicle veh = PED::GET_VEHICLE_PED_IS_USING(playerPed);
 		AUDIO::SET_VEHICLE_RADIO_ENABLED(veh, !featureDisableRadio);
+	}
+
+	// remove all cars and pedestrians
+	if (!featureDynamicScene) 
+	{
+		VEHICLE::SET_RANDOM_VEHICLE_DENSITY_MULTIPLIER_THIS_FRAME(0);
+		PED::SET_PED_DENSITY_MULTIPLIER_THIS_FRAME(0);
+	} 
+	else
+	{
+		VEHICLE::SET_RANDOM_VEHICLE_DENSITY_MULTIPLIER_THIS_FRAME(1);
+		PED::SET_PED_DENSITY_MULTIPLIER_THIS_FRAME(1);
 	}
 }
 
@@ -1227,7 +1240,7 @@ int activeLineIndexMisc = 0;
 void process_cam_tracker_menu()
 {
 	const float lineWidth = 250.0;
-	const int lineCount = 3;
+	const int lineCount = 4;
 
 	std::string caption = "CAMERA TRACKER";
 
@@ -1237,7 +1250,8 @@ void process_cam_tracker_menu()
 		bool		*pUpdated;
 	} lines[lineCount] = {
 		{ "HIDE HUD",			&featureMiscHideHud,	NULL},
-		{ "DISPLAY POSE",		&featureDisplayCameraPose, NULL},	
+		{ "DISPLAY POSE",		&featureDisplayCameraPose, NULL},
+		{ "DYNAMIC SCENE",      &featureDynamicScene, NULL },
 		{ "TRACK (F9)",			NULL, NULL }
 	};
 
